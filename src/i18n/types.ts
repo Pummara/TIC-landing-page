@@ -2,7 +2,6 @@ export type Locale = 'th' | 'en'
 
 export interface ServiceItem {
   title: string
-  subtitle: string
   description: string
 }
 
@@ -60,7 +59,7 @@ export interface Dictionary {
     eyebrow: string
     heading: string
     subheading: string
-    phone: { label: string; value: string; sub: string }
+    phone: { label: string; value: string; mobile: string; sub: string }
     email: { label: string; value: string; sub: string }
     address: { label: string; value: string; sub: string }
   }

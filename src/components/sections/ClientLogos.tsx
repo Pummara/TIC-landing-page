@@ -51,6 +51,7 @@ function MarqueeRow({ items, reverse }: { items: typeof clientsRow1; reverse?: b
             src={client.src}
             alt={client.name}
             aria-hidden={i >= items.length}
+            loading="lazy"
             className="mx-12 h-16 w-auto shrink-0 object-contain sm:h-20"
           />
         ))}

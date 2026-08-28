@@ -21,7 +21,7 @@ export default function Header() {
     <header
       className={clsx(
         'sticky top-0 z-50 border-b-2 border-ink bg-paper-white transition-shadow duration-200',
-        scrolled && 'shadow-[0_2px_0_0_rgba(12,42,77,0.08)]',
+        scrolled && 'shadow-[0_2px_0_0_theme(colors.ink.DEFAULT/8%)]',
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
@@ -46,7 +46,7 @@ export default function Header() {
           <a
             href={telHref(t.header.phoneLabel)}
             aria-label={t.header.phoneLabel}
-            className="sweep [--sweep-bg:theme(colors.ink.DEFAULT)] flex h-9 w-9 items-center justify-center border border-ink text-ink hover:text-paper-white focus-visible:text-paper-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-dark sm:hidden"
+            className="sweep [--sweep-bg:theme(colors.ink.DEFAULT)] flex h-11 w-11 items-center justify-center border border-ink text-ink hover:text-paper-white focus-visible:text-paper-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-dark sm:hidden"
           >
             <PhoneIcon className="h-4 w-4" />
           </a>

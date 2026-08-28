@@ -21,14 +21,14 @@ export default function LanguageToggle({ tone = 'light' }: LanguageToggleProps) 
             aria-pressed={active}
             onClick={() => setLocale(code)}
             className={clsx(
-              'px-3.5 py-1.5 font-mono text-sm font-semibold uppercase tracking-wide transition-colors duration-150',
+              'px-3.5 py-3 font-mono text-sm font-semibold uppercase tracking-wide transition-colors duration-150',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-dark focus-visible:ring-offset-1',
               i === 0 && (tone === 'light' ? 'border-r border-ink' : 'border-r border-paper-white/60'),
               active
                 ? 'bg-gold text-ink'
                 : clsx(
-                    'sweep [--sweep-bg:rgba(212,170,71,0.15)]',
-                    tone === 'light' ? 'text-ink/60 hover:text-ink' : 'text-paper-white/60 hover:text-paper-white',
+                    'sweep [--sweep-bg:theme(colors.gold.DEFAULT/15%)]',
+                    tone === 'light' ? 'text-ink/70 hover:text-ink' : 'text-paper-white/60 hover:text-paper-white',
                   ),
             )}
           >

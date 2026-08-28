@@ -25,6 +25,43 @@ export default function Contact() {
 
         <div className="mt-12 grid divide-y divide-ink/20 border-y-2 border-ink/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {cards.map(({ icon, key, href }) => {
+            if (key === 'phone') {
+              const { label, value, mobile, sub } = t.contact.phone
+              return (
+                <div
+                  key={key}
+                  className="group sweep sweep-focus-within [--sweep-bg:theme(colors.ink.DEFAULT)] flex flex-col gap-3 px-2 py-8 sm:px-8"
+                >
+                  <IconBadge
+                    icon={icon}
+                    tone="outline-dark"
+                    size="sm"
+                    className="transition-colors duration-150 group-hover:border-gold group-hover:text-gold group-focus-within:border-gold group-focus-within:text-gold"
+                  />
+                  <p className="text-sm font-semibold uppercase tracking-widest text-ink/80 transition-colors duration-150 group-hover:text-gold group-focus-within:text-gold">
+                    {label}
+                  </p>
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href={href(value)}
+                      className="font-[Prompt,sans-serif] text-2xl font-bold uppercase tracking-tight text-ink transition-colors duration-150 group-hover:text-paper-white group-focus-within:text-paper-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-dark sm:text-3xl"
+                    >
+                      {value}
+                    </a>
+                    <a
+                      href={href(mobile)}
+                      className="font-[Prompt,sans-serif] text-2xl font-bold uppercase tracking-tight text-ink transition-colors duration-150 group-hover:text-paper-white group-focus-within:text-paper-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-dark sm:text-3xl"
+                    >
+                      {mobile}
+                    </a>
+                  </div>
+                  <p className="text-base text-ink/85 transition-colors duration-150 group-hover:text-paper-white/90 group-focus-within:text-paper-white/90">
+                    {sub}
+                  </p>
+                </div>
+              )
+            }
+
             const data = t.contact[key]
             const link = href(data.value)
             const Wrapper = link ? 'a' : 'div'
@@ -43,7 +80,7 @@ export default function Contact() {
                 <p className="text-sm font-semibold uppercase tracking-widest text-ink/80 transition-colors duration-150 group-hover:text-gold group-focus-visible:text-gold">
                   {data.label}
                 </p>
-                <p className="font-display text-2xl font-bold uppercase tracking-tight text-ink transition-colors duration-150 group-hover:text-paper-white group-focus-visible:text-paper-white sm:text-3xl">
+                <p className="font-[Prompt,sans-serif] text-2xl font-bold uppercase tracking-tight text-ink transition-colors duration-150 group-hover:text-paper-white group-focus-visible:text-paper-white sm:text-3xl">
                   {data.value}
                 </p>
                 <p className="text-base text-ink/85 transition-colors duration-150 group-hover:text-paper-white/90 group-focus-visible:text-paper-white/90">

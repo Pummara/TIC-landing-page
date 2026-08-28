@@ -24,14 +24,14 @@ html {
 
 body {
   font-family: 'Inter', 'Prompt', sans-serif;
-  background-color: #f5f7f6;
+  background-color: theme('colors.paper.DEFAULT');
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: tabular-nums;
 }
 
 ::selection {
-  background-color: #d4aa47;
-  color: #0c2a4d;
+  background-color: theme('colors.gold.DEFAULT');
+  color: theme('colors.ink.DEFAULT');
 }
 
 /* Tabular numerals in mono contexts read as measured data, not a costume. */
@@ -42,7 +42,7 @@ body {
 
 /* Perforated ticket-stub divider: a row of punched dots between manifest rows. */
 .perf-divider {
-  background-image: radial-gradient(circle, rgba(12, 42, 77, 0.22) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, theme('colors.ink.DEFAULT / 22%') 1.5px, transparent 1.5px);
   background-size: 12px 100%;
   background-repeat: repeat-x;
   background-position: center;
@@ -50,7 +50,7 @@ body {
 }
 
 .perf-divider--light {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, theme('colors.paper.white / 28%') 1.5px, transparent 1.5px);
 }
 
 /*
@@ -125,6 +125,19 @@ html[lang='th'] .font-display.font-black {
 }
 .sweep:hover::before,
 .sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/*
+ * Extends .sweep's ink-fill trigger to fire on a focused descendant, not
+ * just the element itself — needed for Contact's phone card, whose wrapper
+ * is a plain <div> around two independently-focusable tel: links (a single
+ * <a> can't hold two different tel: targets). Opt-in only: every other
+ * .sweep element keeps its :focus-visible-only behavior (mouse-click focus
+ * doesn't trigger it there) — don't add :focus-within to the shared .sweep
+ * rule above, that would change that behavior system-wide.
+ */
+.sweep-focus-within:focus-within::before {
   transform: scaleX(1);
 }
 

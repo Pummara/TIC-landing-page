@@ -1,12 +1,13 @@
 import type { ComponentType, SVGProps } from 'react'
 import clsx from '../../lib/clsx'
 
-type Tone = 'ink' | 'outline-light' | 'outline-dark'
+type Tone = 'ink' | 'outline-light' | 'outline-dark' | 'outline-gold'
 
 const toneClasses: Record<Tone, string> = {
   ink: 'bg-ink text-paper-white',
   'outline-light': 'bg-transparent text-paper-white border border-paper-white/60',
   'outline-dark': 'bg-transparent text-ink border border-ink/60',
+  'outline-gold': 'bg-transparent text-paper-white border border-gold',
 }
 
 interface IconBadgeProps {

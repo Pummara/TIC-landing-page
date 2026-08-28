@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-28T12:00:00Z",
+  "generatedAt": "2026-08-28T16:00:00Z",
   "title": "Design System: TIC — Tera International Commercial Co., Ltd.",
   "extensions": {
     "colorMeta": {
@@ -52,7 +52,8 @@
       "gold-text": {
         "role": "secondary",
         "displayName": "Beacon Gold, Text",
-        "canonical": "#7D6318"
+        "canonical": "#7D6318",
+        "note": "Currently unused in the built site (its consumer, Services' subtitle label, was removed by direct instruction) — kept defined as the accessible small-text gold shade for light grounds."
       },
       "paper": {
         "role": "neutral",
@@ -189,10 +190,18 @@
       "css": ".ds-chip-outline-dark { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: transparent; color: #0C2A4D; border: 1px solid rgba(12,42,77,0.6); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }"
     },
     {
+      "name": "Icon Chip (Outline Gold)",
+      "kind": "custom",
+      "refersTo": "icon-chip-outline-gold",
+      "description": "Transparent chip with a solid vivid-gold border, white icon — Trust Bar's 4 icons only (dark ink ground), by direct instruction. Why Choose Us keeps Outline-light; the two tones must not drift together.",
+      "html": "<span class=\"ds-chip-outline-gold\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z\"/></svg></span>",
+      "css": ".ds-chip-outline-gold { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: transparent; color: #ffffff; border: 1px solid #D4AA47; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }"
+    },
+    {
       "name": "Services Table Row",
       "kind": "custom",
       "refersTo": "service-row",
-      "description": "The system's signature component: a ruled timetable row, not a card. Two columns only (icon+title, details) at gap-x-12 — no code/tag column, widened from gap-x-6 by direct instruction. Description has no max-width cap or line-count reserve — it fills the details column's full width (TH/EN row heights can now differ slightly on toggle, traded off deliberately). Two fonts only (Display + Body) — subtitle and column headers moved off JetBrains Mono, which read as thin. The subtitle only renders when it differs from the title — en.ts had set both to the identical string, which showed every English label twice; fixed as a rendering guard rather than inventing new subtitle copy.",
+      "description": "The system's signature component: a ruled timetable row, not a card. Two columns only (icon+title, details) at gap-x-12 — no code/tag column, widened from gap-x-6 by direct instruction. Description has no max-width cap or line-count reserve — it fills the details column's full width (TH/EN row heights can now differ slightly on toggle, traded off deliberately). Two fonts only (Display + Body) — column headers moved off JetBrains Mono, which read as thin. No subtitle field/line — it originally existed, was patched to only render when it differed from the title, then removed entirely by direct instruction because showing it on only 2 of 4 rows read as inconsistent. Every row is now title + description only.",
       "html": "<div class=\"ds-svc-table\"><div class=\"ds-svc-head\"><span>Service</span><span>Details</span></div><div class=\"ds-svc-row\"><span class=\"ds-chip-ink\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13.5 3.5c.6 0 1.1.5 1.1 1.2v5l6 3.6v2l-6-1.7v3.9l2 1.4v1.7l-3.6-1.1-3.6 1.1v-1.7l2-1.4v-3.9l-6 1.7v-2l6-3.6v-5c0-.7.5-1.2 1.1-1.2z\"/></svg></span><div><h3 class=\"ds-svc-title\">Air Ticket</h3><p class=\"ds-svc-sub\">Air Ticket</p><p class=\"ds-svc-desc\">Book flights worldwide across every airline, at special rates.</p></div></div></div>",
       "css": ".ds-svc-table { border-top: 2px solid #0C2A4D; font-family: Inter, sans-serif; } .ds-svc-head { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid rgba(12,42,77,0.3); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #5B6B7C; } .ds-svc-row { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 48px; padding: 24px 8px; border-bottom: 1px solid rgba(12,42,77,0.2); } .ds-svc-title { font-family: 'Big Shoulders Display', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; } .ds-svc-sub { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; color: #8A6B20; } .ds-svc-desc { margin-top: 8px; font-size: 16px; color: #5B6B7C; }"
     },
@@ -216,23 +225,31 @@
       "name": "Contact Entry",
       "kind": "custom",
       "refersTo": "contact-block",
-      "description": "One entry on the full-bleed gold Contact band. Text is ink (white fails outright on this gold). Hover inverts to ink fill. Label is Body font, not mono (moved off JetBrains Mono by direct instruction — it read as thin). Phone/Email/Address labels are English in both locales by direct instruction.",
+      "description": "One entry on the full-bleed gold Contact band. Text is ink (white fails outright on this gold). Hover/keyboard-focus inverts to ink fill. Label is Body font, not mono. Phone/Email/Address labels are English in both locales by direct instruction. Value line uses font-family: Prompt (not the display face) — pure-Latin phone/email values were rendering fully in Big Shoulders Display while the Thai address value fell back entirely to Prompt, two unrelated typefaces in one row; forcing Prompt uniformly fixed it. The Phone entry specifically carries a second value (a mobile number) as its own independently-clickable tel: link, added by direct instruction — see the separate Contact Phone Entry component.",
       "html": "<a href=\"tel:024330191\" class=\"ds-contact-entry\"><span class=\"ds-chip-outline-dark\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.6 3.5h2.3l1.4 4.1-1.9 1.6a12.5 12.5 0 006.4 6.4l1.6-1.9 4.1 1.4v2.3c0 1-.85 1.75-1.85 1.6A16.7 16.7 0 015 5.35c-.15-1 .6-1.85 1.6-1.85z\"/></svg></span><p class=\"ds-contact-label\">Phone</p><p class=\"ds-contact-value\">02-433-0191</p><p class=\"ds-contact-sub\">Open 09.00 - 17.00</p></a>",
-      "css": ".ds-contact-entry { display: flex; flex-direction: column; gap: 12px; padding: 32px; text-decoration: none; transition: background-color 0.15s; } .ds-contact-entry:hover { background: #0C2A4D; } .ds-contact-label { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(12,42,77,0.8); transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-label { color: #D4AA47; } .ds-contact-value { font-family: 'Big Shoulders Display', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-value { color: #ffffff; } .ds-contact-sub { font-size: 16px; color: rgba(12,42,77,0.85); }"
+      "css": ".ds-contact-entry { display: flex; flex-direction: column; gap: 12px; padding: 32px; text-decoration: none; transition: background-color 0.15s; } .ds-contact-entry:hover { background: #0C2A4D; } .ds-contact-label { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(12,42,77,0.8); transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-label { color: #D4AA47; } .ds-contact-value { font-family: 'Prompt', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-value { color: #ffffff; } .ds-contact-sub { font-size: 16px; color: rgba(12,42,77,0.85); }"
+    },
+    {
+      "name": "Contact Phone Entry",
+      "kind": "custom",
+      "refersTo": "contact-phone-block",
+      "description": "The Phone entry's special structure, added by direct instruction (a second mobile number, Contact-section-only — Header/Footer still show only the landline). One wrapping <a> can't hold two different tel: targets, so this entry renders as a plain <div> (not a link) containing two independent tel: <a> lines. Because the wrapper itself is no longer focusable, its ink-fill hover/focus can't rely on the shared .sweep:focus-visible rule (keyed to the wrapper's own focus) — it adds an opt-in .sweep-focus-within class (extends the trigger to :focus-within, i.e. either inner link) plus group-focus-within:* on its icon/label/sub instead of group-focus-visible:*. Never edit the shared .sweep rule to add :focus-within globally — that would change every other .sweep element's (buttons, Language Toggle, Header's mobile phone icon, Contact's own Email entry) focus behavior too.",
+      "html": "<div class=\"ds-contact-phone-entry\"><span class=\"ds-chip-outline-dark\">...</span><p class=\"ds-contact-label\">Phone</p><a href=\"tel:024330191\" class=\"ds-contact-value\">02-433-0191</a><a href=\"tel:0815645966\" class=\"ds-contact-value\">081-564-5966</a><p class=\"ds-contact-sub\">Open 09.00 - 17.00</p></div>",
+      "css": ".ds-contact-phone-entry { display: flex; flex-direction: column; gap: 12px; padding: 32px; } .ds-contact-phone-entry:hover, .ds-contact-phone-entry:focus-within { background: #0C2A4D; } .ds-contact-phone-entry .ds-contact-value { display: block; font-family: 'Prompt', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; text-decoration: none; transition: color 0.15s; } .ds-contact-phone-entry:hover .ds-contact-value, .ds-contact-phone-entry:focus-within .ds-contact-value { color: #ffffff; }"
     },
     {
       "name": "Language Toggle",
       "kind": "nav",
       "refersTo": "language-toggle",
-      "description": "Rectangular two-tab switch, mono labels, gold active fill with ink text.",
+      "description": "Rectangular two-tab switch, mono labels, gold active fill with ink text. Inactive-tab opacity and tab padding were both corrected by an /impeccable audit pass: text was rgba(12,42,77,0.6) (4.11:1, failed WCAG AA 4.5:1) and padding was 6px 14px (~32px tall, under the 44px touch-target guideline).",
       "html": "<div class=\"ds-lang-toggle\" role=\"group\"><button class=\"ds-lang-toggle-btn ds-lang-toggle-btn--active\" aria-pressed=\"true\">TH</button><button class=\"ds-lang-toggle-btn\" aria-pressed=\"false\">EN</button></div>",
-      "css": ".ds-lang-toggle { display: inline-flex; border: 1px solid #0C2A4D; font-family: 'JetBrains Mono', monospace; } .ds-lang-toggle-btn { border: none; border-left: 1px solid #0C2A4D; background: transparent; padding: 6px 14px; font-size: 14px; font-weight: 600; text-transform: uppercase; color: rgba(12,42,77,0.6); cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-lang-toggle-btn:first-child { border-left: none; } .ds-lang-toggle-btn:hover { color: #0C2A4D; } .ds-lang-toggle-btn--active { background: #D4AA47; color: #0C2A4D; } .ds-lang-toggle-btn:focus-visible { outline: 2px solid #B08829; outline-offset: 1px; }"
+      "css": ".ds-lang-toggle { display: inline-flex; border: 1px solid #0C2A4D; font-family: 'JetBrains Mono', monospace; } .ds-lang-toggle-btn { border: none; border-left: 1px solid #0C2A4D; background: transparent; padding: 12px 14px; font-size: 14px; font-weight: 600; text-transform: uppercase; color: rgba(12,42,77,0.7); cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-lang-toggle-btn:first-child { border-left: none; } .ds-lang-toggle-btn:hover { color: #0C2A4D; } .ds-lang-toggle-btn--active { background: #D4AA47; color: #0C2A4D; } .ds-lang-toggle-btn:focus-visible { outline: 2px solid #B08829; outline-offset: 1px; }"
     },
     {
       "name": "Punch-Through Sweep",
       "kind": "custom",
       "refersTo": "sweep",
-      "description": "Hover/focus fill reveal for solid/bordered clickable elements. Wipes in from the leading edge like a departures-board flap flipping to its next state, rather than a flat color crossfade. --sweep-bg set per usage.",
+      "description": "Hover/focus fill reveal for solid/bordered clickable elements. Wipes in from the leading edge like a departures-board flap flipping to its next state, rather than a flat color crossfade. --sweep-bg set per usage. --sweep-bg values reference the token file via theme() (e.g. theme(colors.gold.DEFAULT/15%)), not a raw rgba() literal — converted by an /impeccable audit pass.",
       "html": "<a class=\"sweep\" style=\"--sweep-bg:#0C2A4D\" href=\"#\">Contact us</a>",
       "css": ".sweep { position: relative; overflow: hidden; isolation: isolate; } .sweep::before { content: ''; position: absolute; inset: 0; z-index: -1; background-color: var(--sweep-bg); transform: scaleX(0); transform-origin: left; transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .sweep:hover::before, .sweep:focus-visible::before { transform: scaleX(1); }"
     },
@@ -334,7 +351,13 @@
       "Do use ring-gold-dark (never vivid ring-gold) on any focus ring, on any ground.",
       "Do keep Services' subtitle conditionally rendered (only when it differs from the title) so a future locale/content edit that accidentally duplicates the title doesn't silently show the label twice again.",
       "Do use .sweep (filled elements) or .rule-underline (plain text links) for any new clickable element's hover/focus feedback, triggered on both :hover and :focus-visible.",
-      "Do keep the smoothed-wheel effect narrow: wheel input only, pointer:fine only, reduced-motion gated, driving real window.scrollY (not a transformed wrapper)."
+      "Do keep the smoothed-wheel effect narrow: wheel input only, pointer:fine only, reduced-motion gated, driving real window.scrollY (not a transformed wrapper).",
+      "Do keep Trust Bar on outline-gold and Why Choose Us on outline-light — never let the two icon-chip tones drift together.",
+      "Do use group-focus-within:* plus the opt-in .sweep-focus-within class (never the shared .sweep rule) for any card nesting more than one focusable child, as Contact's phone entry does.",
+      "Do keep Contact's second phone number scoped to the Contact section only — Header and Footer intentionally still show just the landline.",
+      "Do reference the token file via theme() for any color literal, even at a fractional opacity — never a raw hex/rgba.",
+      "Do keep loading=lazy on Client Logos' and Partner Airlines' images (below-the-fold bulk of the image payload); keep Hero/Header/Footer images eager (Hero's photo is the LCP candidate).",
+      "Do keep Language Toggle's tabs at 44px (py-3) and its inactive-tab text at ink/70 — both were audit-verified fixes for a failing touch target and a failing contrast ratio."
     ],
     "donts": [
       "Don't add a shadow anywhere.",
@@ -353,7 +376,13 @@
       "Don't translate Partner Airlines' group labels into Thai, move Client Logos back below Contact, drop the second reverse-direction marquee row, or reset the marquee duration away from 40s — all set by direct instruction.",
       "Don't make the two Client Logos marquee rows share the same client list (even reverse-ordered) — same-duration/same-width/opposite-direction locks them into a fixed relative offset, so any overlap never resolves. Split the list instead.",
       "Don't add a hover-lift/shadow/scale treatment to any clickable element — generic pattern this world doesn't use. The sweep and ruled-underline are the system's actual hover language.",
-      "Don't widen the smoothed-wheel effect to touch/keyboard/scrollbar input, and don't reimplement it as a transformed-wrapper/virtual-scroll (e.g. the full Locomotive Scroll library) — real scrollY is what keeps IntersectionObserver reveals and anchor links working unmodified."
+      "Don't widen the smoothed-wheel effect to touch/keyboard/scrollbar input, and don't reimplement it as a transformed-wrapper/virtual-scroll (e.g. the full Locomotive Scroll library) — real scrollY is what keeps IntersectionObserver reveals and anchor links working unmodified.",
+      "Don't reintroduce font-display (or swap to font-sans) on Contact's value line — it's font-[Prompt,sans-serif] by direct instruction, fixing a real cross-script typeface mismatch (Big Shoulders Display for Latin phone/email vs. its Prompt fallback for the Thai address).",
+      "Don't add :focus-within to the shared .sweep rule in index.css to fix a future multi-child card — that would change every other .sweep element's focus behavior sitewide. Use a scoped opt-in class instead.",
+      "Don't translate the footer copyright into Thai — English in both locales by direct instruction.",
+      "Don't reintroduce a subtitle field on Services' ServiceItem — removed by direct instruction for row-to-row consistency; every row is title + description only now.",
+      "Don't shrink Language Toggle's touch target or lighten its inactive-tab opacity back down — both failed verified checks (32px target, 4.11:1 contrast).",
+      "Don't write a new raw hex/rgba color literal anywhere — reference the token file via theme()."
     ]
   }
 }

@@ -38,9 +38,6 @@ export default function Services() {
                 <IconBadge icon={Icon} tone="ink" size="md" />
                 <div>
                   <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink">{item.title}</h3>
-                  {item.subtitle.trim().toLowerCase() !== item.title.trim().toLowerCase() && (
-                    <p className="text-sm font-semibold uppercase tracking-wide text-gold-text">{item.subtitle}</p>
-                  )}
                   <p className="mt-2 text-base leading-relaxed text-slatecopy">{item.description}</p>
                 </div>
               </div>

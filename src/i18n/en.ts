@@ -16,9 +16,10 @@ const en = {
     headlineLine2: 'TRAVEL PARTNER',
     subtitle: 'Tera International Commercial Co., Ltd.',
     bullets: [
-      'Full-circle travel expertise, start to finish',
-      'Professional, fast and dependable service',
-      'Serving individual travelers and organizations alike',
+      'Comprehensive travel expertise, start to finish',
+      'Professional, fast, and reliable service',
+      'Serving individual clients, organizations, and government and state-enterprise agencies',
+      'One-stop travel services',
     ],
     ctaPrimary: 'Contact us',
     ctaSecondary: 'See our services',
@@ -36,23 +37,21 @@ const en = {
     items: [
       {
         title: 'Air Ticket',
-        subtitle: 'Air Ticket',
-        description: 'Book flights worldwide across every airline, at special rates, with fast ticket issuance.',
+        description: 'Book domestic and international flights on every airline worldwide — real tickets, real travel.',
       },
       {
         title: 'Visa Service',
-        subtitle: 'Visa Service',
-        description: 'Visa application support for any country, handled by our professional team — free consultation.',
+        description: 'Visa application support for tourism and business travel, handled by our professional team.',
       },
       {
-        title: 'Car Rental & Transfer',
-        subtitle: 'Car Rental & Transfer',
-        description: 'Quality rental cars with professional drivers, plus airport transfers anywhere in Thailand.',
+        title: 'Car Rental with Driver',
+        description:
+          'Professional chauffeur-driven car rental for airport transfers and private full-day charters, available both within Thailand and abroad.',
       },
       {
-        title: 'Hotel Booking',
-        subtitle: 'Hotel Booking',
-        description: 'Hotel reservations worldwide at special rates, for individual travelers and organizations.',
+        title: 'Hotels',
+        description:
+          'Hotel bookings worldwide with guaranteed reservations and rooms — serving individual travelers, corporate clients, and government and state-enterprise organizations.',
       },
     ],
   },
@@ -75,7 +74,7 @@ const en = {
     eyebrow: 'Contact us',
     heading: 'Contact us',
     subheading: "We're ready to take care of your next trip",
-    phone: { label: 'Phone', value: '02-433-0191', sub: 'Open 09.00 - 17.00' },
+    phone: { label: 'Phone', value: '02-433-0191', mobile: '081-564-5966', sub: 'Open 09.00 - 17.00' },
     email: { label: 'Email', value: 'info@ticpumra.com', sub: 'We reply within 24 hours' },
     address: {
       label: 'Address',
@@ -92,7 +91,7 @@ const en = {
     servicesTitle: 'Our services',
     servicesList: ['Air Ticket', 'Visa Service', 'Car Rental & Transfer', 'Hotel Booking'],
     contactTitle: 'Contact us',
-    copyright: '© 2024 Tera International Commercial Co., Ltd. All Rights Reserved.',
+    copyright: '© 1987-2026 Tera International Commercial Co., Ltd. All rights reserved.',
   },
   common: {
     langToggleTh: 'TH',
