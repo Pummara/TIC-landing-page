@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Prompt:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: 'Inter', 'Prompt', sans-serif;
+  background-color: #f5f7f6;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background-color: #d4aa47;
+  color: #0c2a4d;
+}
+
+/* Tabular numerals in mono contexts read as measured data, not a costume. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Perforated ticket-stub divider: a row of punched dots between manifest rows. */
+.perf-divider {
+  background-image: radial-gradient(circle, rgba(12, 42, 77, 0.22) 1.5px, transparent 1.5px);
+  background-size: 12px 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  height: 1px;
+}
+
+.perf-divider--light {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+}
+
+/*
+ * Big Shoulders Display and Prompt render at visibly different perceived
+ * weight for the same numeric font-weight — Prompt reads heavier than Big
+ * Shoulders Display at an equal value. Rather than flattening every display
+ * heading to one weight (which would destroy the intentional 700/800/900
+ * hierarchy), step Thai down one Tailwind weight at each level so the two
+ * scripts read as visually matched siblings instead of mismatched cousins.
+ */
+html[lang='th'] .font-display.font-bold {
+  font-weight: 600;
+}
+html[lang='th'] .font-display.font-extrabold {
+  font-weight: 700;
+}
+html[lang='th'] .font-display.font-black {
+  font-weight: 800;
+}
+
+/* Continuous right-to-left logo marquee; duplicated track for a seamless loop. */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-rtl 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-track--reverse {
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/*
+ * The Punch-Through Sweep — hover/focus feedback on solid/bordered clickable
+ * elements (buttons, icon-square links, Contact cells). Rather than a flat
+ * color crossfade, the fill wipes in from the leading edge like a departures-
+ * board flap flipping to its next state: mechanical and directional, not a
+ * generic hover fade. `--sweep-bg` is set per usage. The pseudo-element sits
+ * at z-index -1 inside its own isolated stacking context, which paints it
+ * above the element's own background but below normal in-flow content
+ * (text/icons), so no extra wrapper is needed for the label to stay legible.
+ * `prefers-reduced-motion` is handled by the global transition-duration
+ * collapse above — the fill still lands, just without the wipe.
+ */
+.sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--sweep-bg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sweep:hover::before,
+.sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/*
+ * The Ruled Underline — hover/focus feedback on plain inline text links
+ * (header/footer phone and email). An animated hairline draws in beneath the
+ * text, echoing the system's own ruled-row motif instead of a generic
+ * underline. Uses currentColor so it always matches the link's active color.
+ */
+.rule-underline {
+  position: relative;
+}
+.rule-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rule-underline:hover::after,
+.rule-underline:focus-visible::after {
+  transform: scaleX(1);
+}

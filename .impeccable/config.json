@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-27T06:30:00.244Z",
+        "reason": "Intentional pairing with Prompt (Thai) and Big Shoulders Display (headings) per DESIGN.md typography system, not a default-font miss — repeatedly confirmed across this session's design passes"
+      }
+    ]
+  }
+}

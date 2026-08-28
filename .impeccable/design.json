@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-28T12:00:00Z",
+  "title": "Design System: TIC — Tera International Commercial Co., Ltd.",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "#0C2A4D",
+        "tonalRamp": [
+          "#07182c",
+          "#0e3058",
+          "#154884",
+          "#1d65b9",
+          "#3886e0",
+          "#72a9e9",
+          "#b0cff3",
+          "#e9f2fc"
+        ]
+      },
+      "ink-light": {
+        "role": "primary",
+        "displayName": "Ink, Light",
+        "canonical": "#1E4370"
+      },
+      "ink-deep": {
+        "role": "primary",
+        "displayName": "Ink, Deep",
+        "canonical": "#081B33"
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Beacon Gold",
+        "canonical": "#D4AA47",
+        "tonalRamp": [
+          "#322c01",
+          "#645802",
+          "#958404",
+          "#d1b905",
+          "#fae01f",
+          "#fbe960",
+          "#fdf3a5",
+          "#fefce6"
+        ]
+      },
+      "gold-dark": {
+        "role": "secondary",
+        "displayName": "Beacon Gold, Dark",
+        "canonical": "#B08829"
+      },
+      "gold-text": {
+        "role": "secondary",
+        "displayName": "Beacon Gold, Text",
+        "canonical": "#7D6318"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F5F7F6"
+      },
+      "paper-ply": {
+        "role": "neutral",
+        "displayName": "Paper, Ply",
+        "canonical": "#EAF0F5"
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper, White",
+        "canonical": "#FFFFFF"
+      },
+      "slatecopy": {
+        "role": "neutral",
+        "displayName": "Slate Copy",
+        "canonical": "#5B6B7C",
+        "tonalRamp": [
+          "#16191d",
+          "#2b333b",
+          "#414c58",
+          "#5b6b7c",
+          "#7b8c9e",
+          "#a1adba",
+          "#cad1d8",
+          "#f0f2f4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, always Latin today (brand line is identical across locales)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section H2 — renders in Prompt for Thai at matching weight."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service-row titles and Contact's phone/email/address values."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, footer text, nav links."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Mono column headers, contact labels, language toggle. 14px floor — nothing in the system goes smaller."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "scroll-reveal-hero",
+        "value": "translate-y(24px→0) + opacity(0→1), 700ms ease-out",
+        "purpose": "Hero content block on first scroll into viewport."
+      },
+      {
+        "name": "scroll-reveal-row",
+        "value": "translate-y(16px→0) + opacity(0→1), 500ms, staggered 80ms per row",
+        "purpose": "Services table rows reveal in sequence."
+      },
+      {
+        "name": "punch-through-sweep",
+        "value": "::before scaleX(0)->1, transform-origin left, 200ms cubic-bezier(0.16,1,0.3,1), z-index -1 inside isolated stacking context",
+        "purpose": "Hover/focus feedback on solid/bordered clickable elements (buttons, Contact cells, mobile phone icon, Language Toggle inactive tab) — a directional fill wipe, not a flat crossfade."
+      },
+      {
+        "name": "ruled-underline",
+        "value": "::after scaleX(0)->1, transform-origin left, 200ms cubic-bezier(0.16,1,0.3,1), background: currentColor",
+        "purpose": "Hover/focus feedback on plain inline text links (header/footer phone and email) — an animated hairline draw, reusing the system's ruled-row motif."
+      },
+      {
+        "name": "reduced-motion-floor",
+        "value": "all animation/transition durations collapse to ~0 under prefers-reduced-motion: reduce",
+        "purpose": "Hard accessibility floor."
+      },
+      {
+        "name": "smoothed-wheel",
+        "value": "requestAnimationFrame lerp of real window.scrollY toward a wheel-accumulated target, ease 0.12, wheel-only + pointer:fine only + reduced-motion gated",
+        "purpose": "A restrained Locomotive-Scroll-style ease on desktop wheel input, added by direct instruction. Touch, keyboard, and scrollbar-drag scrolling stay fully native everywhere."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action. Gold fill, ink text (white fails on this gold). Hover inverts to ink fill/gold text. Focus ring corrected from ring-gold to ring-gold-dark (a critique pass found it had regressed to the vivid value, which fails 3:1). Hover/focus fill now uses the Punch-Through Sweep (directional wipe) instead of a flat crossfade.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Contact us</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; font-family: 'Big Shoulders Display', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; background: #D4AA47; color: #0C2A4D; text-decoration: none; transition: color 0.15s; /* background swap now handled by the .sweep pseudo-element, not a background-color transition */ } .ds-btn-primary:hover { background: #0C2A4D; color: #D4AA47; } .ds-btn-primary:focus-visible { outline: 2px solid #B08829; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button (Light)",
+      "kind": "button",
+      "refersTo": "button-outline-light",
+      "description": "Secondary button for the hero/dark backgrounds. Hover fills gold with ink text.",
+      "html": "<a href=\"#\" class=\"ds-btn-outline-light\">See our services</a>",
+      "css": ".ds-btn-outline-light { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; font-family: 'Big Shoulders Display', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.7); text-decoration: none; transition: background-color 0.15s, color 0.15s, border-color 0.15s; } .ds-btn-outline-light:hover { background: #D4AA47; color: #0C2A4D; border-color: #D4AA47; } .ds-btn-outline-light:focus-visible { outline: 2px solid #B08829; outline-offset: 2px; }"
+    },
+    {
+      "name": "Icon Chip (Ink)",
+      "kind": "custom",
+      "refersTo": "icon-chip-ink",
+      "description": "Square icon container with a clipped top-right notch. Ink fill for use on paper backgrounds.",
+      "html": "<span class=\"ds-chip-ink\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13.5 3.5c.6 0 1.1.5 1.1 1.2v5l6 3.6v2l-6-1.7v3.9l2 1.4v1.7l-3.6-1.1-3.6 1.1v-1.7l2-1.4v-3.9l-6 1.7v-2l6-3.6v-5c0-.7.5-1.2 1.1-1.2z\"/></svg></span>",
+      "css": ".ds-chip-ink { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: #0C2A4D; color: #ffffff; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }"
+    },
+    {
+      "name": "Icon Chip (Outline Dark)",
+      "kind": "custom",
+      "refersTo": "icon-chip-outline-dark",
+      "description": "Transparent chip with translucent ink border, for light/gold backgrounds (e.g. Contact at rest). Added this pass — white-on-gold fails contrast.",
+      "html": "<span class=\"ds-chip-outline-dark\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.6 3.5h2.3l1.4 4.1-1.9 1.6a12.5 12.5 0 006.4 6.4l1.6-1.9 4.1 1.4v2.3c0 1-.85 1.75-1.85 1.6A16.7 16.7 0 015 5.35c-.15-1 .6-1.85 1.6-1.85z\"/></svg></span>",
+      "css": ".ds-chip-outline-dark { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: transparent; color: #0C2A4D; border: 1px solid rgba(12,42,77,0.6); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }"
+    },
+    {
+      "name": "Services Table Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "The system's signature component: a ruled timetable row, not a card. Two columns only (icon+title, details) at gap-x-12 — no code/tag column, widened from gap-x-6 by direct instruction. Description has no max-width cap or line-count reserve — it fills the details column's full width (TH/EN row heights can now differ slightly on toggle, traded off deliberately). Two fonts only (Display + Body) — subtitle and column headers moved off JetBrains Mono, which read as thin. The subtitle only renders when it differs from the title — en.ts had set both to the identical string, which showed every English label twice; fixed as a rendering guard rather than inventing new subtitle copy.",
+      "html": "<div class=\"ds-svc-table\"><div class=\"ds-svc-head\"><span>Service</span><span>Details</span></div><div class=\"ds-svc-row\"><span class=\"ds-chip-ink\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13.5 3.5c.6 0 1.1.5 1.1 1.2v5l6 3.6v2l-6-1.7v3.9l2 1.4v1.7l-3.6-1.1-3.6 1.1v-1.7l2-1.4v-3.9l-6 1.7v-2l6-3.6v-5c0-.7.5-1.2 1.1-1.2z\"/></svg></span><div><h3 class=\"ds-svc-title\">Air Ticket</h3><p class=\"ds-svc-sub\">Air Ticket</p><p class=\"ds-svc-desc\">Book flights worldwide across every airline, at special rates.</p></div></div></div>",
+      "css": ".ds-svc-table { border-top: 2px solid #0C2A4D; font-family: Inter, sans-serif; } .ds-svc-head { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid rgba(12,42,77,0.3); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #5B6B7C; } .ds-svc-row { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 48px; padding: 24px 8px; border-bottom: 1px solid rgba(12,42,77,0.2); } .ds-svc-title { font-family: 'Big Shoulders Display', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; } .ds-svc-sub { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; color: #8A6B20; } .ds-svc-desc { margin-top: 8px; font-size: 16px; color: #5B6B7C; }"
+    },
+    {
+      "name": "Client Logos Marquee",
+      "kind": "custom",
+      "refersTo": "client-logos-marquee",
+      "description": "Two stacked marquee rows scrolling in opposite directions, each drawing from a disjoint subset of the 13 client logos (7 in row 1, 6 in row 2) — required by direct instruction so the same client logo can never appear in both rows simultaneously. An earlier version had both rows share the same 13-item list (row 2 just reverse-ordered); under animation-direction: reverse with matching duration and track width, that locks the two tracks into a fixed relative offset, so any overlap present at load time is permanent, not transient. Track duplicated within each row for a seamless loop, edge-faded via mask-image (prefixed and unprefixed), pauses on hover, static under prefers-reduced-motion. Logos at h-16/h-20, always full color. Duration 40s. Vertical gap between the two rows is generous (space-y-16/20) and the gap from the section heading to the first row was widened too (mt-16/20, from mt-10) by direct instruction.",
+      "html": "<div class=\"ds-marquee-wrap\"><div class=\"ds-marquee-track\"><img src=\"logo1.png\" alt=\"Client One\"/><img src=\"logo2.png\" alt=\"Client Two\"/><img src=\"logo1.png\" alt=\"Client One\" aria-hidden=\"true\"/><img src=\"logo2.png\" alt=\"Client Two\" aria-hidden=\"true\"/></div></div><div class=\"ds-marquee-wrap\" aria-hidden=\"true\"><div class=\"ds-marquee-track ds-marquee-track--reverse\"><img src=\"logo2.png\" alt=\"\"/><img src=\"logo1.png\" alt=\"\"/><img src=\"logo2.png\" alt=\"\"/><img src=\"logo1.png\" alt=\"\"/></div></div>",
+      "css": ".ds-marquee-wrap { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); } .ds-marquee-wrap + .ds-marquee-wrap { margin-top: 64px; } .ds-marquee-track { display: flex; width: max-content; align-items: center; animation: ds-marquee-rtl 40s linear infinite; will-change: transform; } .ds-marquee-track--reverse { animation-direction: reverse; } .ds-marquee-track:hover { animation-play-state: paused; } .ds-marquee-track img { margin: 0 48px; height: 64px; width: auto; object-fit: contain; } @keyframes ds-marquee-rtl { from { transform: translateX(0); } to { transform: translateX(-50%); } } @media (prefers-reduced-motion: reduce) { .ds-marquee-track { animation: none; } }"
+    },
+    {
+      "name": "Partner Airlines Tile",
+      "kind": "custom",
+      "refersTo": "partner-airlines-tile",
+      "description": "White bordered tile holding one airline logo, used in the Partner Airlines section (two stacked groups: Full-Service, Low-Cost). The tile is a deliberate exception to the no-card rule: source logos were supplied on a black canvas designed for dark application, and several render at unreliable contrast placed directly on a colored or dark section background, so every logo gets a guaranteed-neutral white ground regardless of where the section itself sits. Rows are center-justified (justify-center) by direct instruction so a partial final row centers instead of hugging the left edge. Group padding widened (py-10/14, from py-8) and logo-tile gaps widened (gap-6/7, from gap-3/4) by direct instruction, with the group label centered (text-center, from left-aligned).",
+      "html": "<div class=\"ds-airline-tile\"><img src=\"airline.png\" alt=\"Airline Name\"/></div>",
+      "css": ".ds-airline-tile { display: flex; align-items: center; justify-content: center; height: 80px; padding: 0 24px; border: 1px solid rgba(12,42,77,0.15); background: #FFFFFF; } .ds-airline-tile img { max-height: 44px; width: auto; max-width: 144px; object-fit: contain; }"
+    },
+    {
+      "name": "Contact Entry",
+      "kind": "custom",
+      "refersTo": "contact-block",
+      "description": "One entry on the full-bleed gold Contact band. Text is ink (white fails outright on this gold). Hover inverts to ink fill. Label is Body font, not mono (moved off JetBrains Mono by direct instruction — it read as thin). Phone/Email/Address labels are English in both locales by direct instruction.",
+      "html": "<a href=\"tel:024330191\" class=\"ds-contact-entry\"><span class=\"ds-chip-outline-dark\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.6 3.5h2.3l1.4 4.1-1.9 1.6a12.5 12.5 0 006.4 6.4l1.6-1.9 4.1 1.4v2.3c0 1-.85 1.75-1.85 1.6A16.7 16.7 0 015 5.35c-.15-1 .6-1.85 1.6-1.85z\"/></svg></span><p class=\"ds-contact-label\">Phone</p><p class=\"ds-contact-value\">02-433-0191</p><p class=\"ds-contact-sub\">Open 09.00 - 17.00</p></a>",
+      "css": ".ds-contact-entry { display: flex; flex-direction: column; gap: 12px; padding: 32px; text-decoration: none; transition: background-color 0.15s; } .ds-contact-entry:hover { background: #0C2A4D; } .ds-contact-label { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(12,42,77,0.8); transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-label { color: #D4AA47; } .ds-contact-value { font-family: 'Big Shoulders Display', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; color: #0C2A4D; transition: color 0.15s; } .ds-contact-entry:hover .ds-contact-value { color: #ffffff; } .ds-contact-sub { font-size: 16px; color: rgba(12,42,77,0.85); }"
+    },
+    {
+      "name": "Language Toggle",
+      "kind": "nav",
+      "refersTo": "language-toggle",
+      "description": "Rectangular two-tab switch, mono labels, gold active fill with ink text.",
+      "html": "<div class=\"ds-lang-toggle\" role=\"group\"><button class=\"ds-lang-toggle-btn ds-lang-toggle-btn--active\" aria-pressed=\"true\">TH</button><button class=\"ds-lang-toggle-btn\" aria-pressed=\"false\">EN</button></div>",
+      "css": ".ds-lang-toggle { display: inline-flex; border: 1px solid #0C2A4D; font-family: 'JetBrains Mono', monospace; } .ds-lang-toggle-btn { border: none; border-left: 1px solid #0C2A4D; background: transparent; padding: 6px 14px; font-size: 14px; font-weight: 600; text-transform: uppercase; color: rgba(12,42,77,0.6); cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-lang-toggle-btn:first-child { border-left: none; } .ds-lang-toggle-btn:hover { color: #0C2A4D; } .ds-lang-toggle-btn--active { background: #D4AA47; color: #0C2A4D; } .ds-lang-toggle-btn:focus-visible { outline: 2px solid #B08829; outline-offset: 1px; }"
+    },
+    {
+      "name": "Punch-Through Sweep",
+      "kind": "custom",
+      "refersTo": "sweep",
+      "description": "Hover/focus fill reveal for solid/bordered clickable elements. Wipes in from the leading edge like a departures-board flap flipping to its next state, rather than a flat color crossfade. --sweep-bg set per usage.",
+      "html": "<a class=\"sweep\" style=\"--sweep-bg:#0C2A4D\" href=\"#\">Contact us</a>",
+      "css": ".sweep { position: relative; overflow: hidden; isolation: isolate; } .sweep::before { content: ''; position: absolute; inset: 0; z-index: -1; background-color: var(--sweep-bg); transform: scaleX(0); transform-origin: left; transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .sweep:hover::before, .sweep:focus-visible::before { transform: scaleX(1); }"
+    },
+    {
+      "name": "Ruled Underline",
+      "kind": "custom",
+      "refersTo": "rule-underline",
+      "description": "Hover/focus feedback for plain inline text links, where a filled sweep would look like an unexplained box in transparent chrome. An animated hairline draws in beneath the text using currentColor.",
+      "html": "<a class=\"rule-underline\" href=\"tel:0243300191\">02-433-0191</a>",
+      "css": ".rule-underline { position: relative; } .rule-underline::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background-color: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .rule-underline:hover::after, .rule-underline:focus-visible::after { transform: scaleX(1); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Timetable & Route",
+    "overview": "The system is a working airline timetable and route map rendered as a website, not a trust badge dressed up as one. Everything reads like it was pulled from a departures board or a printed ticket: hairline-ruled rows instead of cards, a Bangkok-centered dashed route network behind the hero, and a bold gold band standing in for the one moment on a real departures board that actually matters — where to go next. TIC's real claim (30+ years, IATA/BSP accredited, one of Thailand's first ten BSP agencies) is proven by the precision of the system, not stated by it.\n\nThe palette runs cooler and paler than a typical \"vintage travel\" cream-and-serif treatment on purpose. The one saturated accent, Beacon Gold, reads as runway-light amber against the ink ground, a real aviation reference, not a decorative choice — originally sampled from the TIC logo, later re-picked to a warmer brass tone (#D4AA47) by direct instruction; its accessible shades are recalculated from whatever the current value is. The hero is a full-bleed background section using a real photo (a banking commercial airliner) rather than a small framed image beside the text. A continuous right-to-left marquee carries the client logo strip.",
+    "keyCharacteristics": [
+      "No cards. Content lives in hairline-ruled rows and columns — a timetable, a manifest, a ledger — never a bordered box with a shadow, except Partner Airlines' logo tiles, justified by a real cross-background legibility problem.",
+      "No circles, no pills. Every shape is sharp-cornered; the one recurring motif is a small clipped notch (a ticket-stub corner) on icon chips.",
+      "One committed saturated color (Beacon Gold, now a chosen brand value — #D4AA47, not derived from the logo) owns a full section at page scale (Contact).",
+      "The hero is a full-bleed real-photo background section with a built-in legibility scrim, not a small framed photo beside the text.",
+      "A dashed route-line motif (SVG, Bangkok-centered, non-specific) is the page's one ambient decorative device.",
+      "Flat everywhere. No drop shadows anywhere in the system.",
+      "Bilingual by construction: Big Shoulders Display leads Latin headlines, Prompt carries Thai at a language-matched weight (Thai steps down one Tailwind weight to compensate for Prompt reading heavier), JetBrains Mono carries every measured/tabular value.",
+      "Client logos scroll in a continuous right-to-left marquee, not a static row."
+    ],
+    "rules": [
+      {
+        "name": "The No-Card Rule",
+        "body": "Content that would default to a bordered, shadowed card is a ruled row instead.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Gold Rule",
+        "body": "Gold is spent in large confident blocks or precise small marks — never a medium decorative accent in between.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Gold Rule",
+        "body": "Vivid Beacon Gold is for large fills and marks/text on a dark ground. On a light ground, text and fine marks must drop to Gold Dark (3:1) or Gold Text (4.5:1).",
+        "section": "colors"
+      },
+      {
+        "name": "The Uppercase Display Rule",
+        "body": "Every Display and Headline instance is uppercase; Body and Label are not forced uppercase.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono-Means-Measured Rule",
+        "body": "JetBrains Mono only appears on a value someone could look up or compare.",
+        "section": "typography"
+      },
+      {
+        "name": "The 14px Floor Rule",
+        "body": "No text in the system renders smaller than 14px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled-Row Rule",
+        "body": "Any list of parallel items is separated by a rule — never card gaps or shadows.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "If a component seems to need a shadow, give it a border or background color change instead.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sharp Corner Rule",
+        "body": "No border-radius on any component. The icon-chip notch is the only permitted corner treatment.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Language-Matched Weight Rule",
+        "body": "Big Shoulders Display and Prompt render at visibly different perceived weight for the same numeric font-weight. Thai steps down one Tailwind weight at each level via html[lang='th'] .font-display.font-bold/.font-extrabold/.font-black overrides in src/index.css, rather than flattening the whole hierarchy to one weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Font Zone Rule",
+        "body": "Services and Contact use only Display + Body (no mono) — their subtitle/column-header/label text was originally JetBrains Mono and read as thin next to the bold display titles. Moved to Body at font-semibold by direct instruction; don't reintroduce mono there.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do keep every parallel list as ruled rows, never cards.",
+      "Do keep border-radius at zero everywhere except the icon-chip notch.",
+      "Do spend Beacon Gold only as a full-section fill or a precise small mark.",
+      "Do use Gold Dark or Gold Text (never vivid Gold) for text or fine marks on a light ground.",
+      "Do use ink text (never white) on the gold Contact band and gold buttons.",
+      "Do keep JetBrains Mono reserved for measured/tabular values (header phone number, language toggle, footer copyright) — not Services/Contact labels.",
+      "Do keep the smallest text in the system at 14px or larger.",
+      "Do respect prefers-reduced-motion on any new animation.",
+      "Do give any new font-display weight class a matching html[lang='th'] override so Thai and English stay weight-matched.",
+      "Do keep the Services table to two columns with no code/tag column, gap-x-12, and the description full-width (no max-w cap, no line-count reserve).",
+      "Do keep the hero photo confined to the right ~58% and mask-faded on sm+ screens — full-bleed only on mobile.",
+      "Do keep client and airline logos always in full color — no grayscale-until-hover treatment.",
+      "Do keep every Partner Airlines logo inside its white bordered tile, even on a background a given logo would individually read fine on.",
+      "Do keep Partner Airlines' logo rows center-justified with generous gaps (gap-6/7) and centered group labels, and keep Client Logos above Contact in the page order.",
+      "Do keep the two Client Logos marquee rows drawing from disjoint client subsets so the same logo never appears in both rows at once.",
+      "Do use ring-gold-dark (never vivid ring-gold) on any focus ring, on any ground.",
+      "Do keep Services' subtitle conditionally rendered (only when it differs from the title) so a future locale/content edit that accidentally duplicates the title doesn't silently show the label twice again.",
+      "Do use .sweep (filled elements) or .rule-underline (plain text links) for any new clickable element's hover/focus feedback, triggered on both :hover and :focus-visible.",
+      "Do keep the smoothed-wheel effect narrow: wheel input only, pointer:fine only, reduced-motion gated, driving real window.scrollY (not a transformed wrapper)."
+    ],
+    "donts": [
+      "Don't add a shadow anywhere.",
+      "Don't add a kicker/eyebrow label above a heading.",
+      "Don't reintroduce circular badges or pill-shaped buttons.",
+      "Don't reintroduce the hero's departure-row service strip — removed by direct instruction.",
+      "Don't reintroduce a code/tag column on the Services table — removed by direct instruction.",
+      "Don't stretch the hero photo full-width on sm+ screens again — confined to the right by direct instruction.",
+      "Don't translate Contact's Phone/Email/Address labels into Thai — they're English in both locales by direct instruction.",
+      "Don't translate the footer's Our services/Contact us headings into Thai — same rule.",
+      "Don't reintroduce JetBrains Mono on Services' subtitle/headers or Contact's labels — moved to Body font by direct instruction.",
+      "Don't add specific city names, flight numbers, or route claims to the RouteMap asset without verifying them.",
+      "Don't fabricate proof — client logos, testimonials, or claims must be real.",
+      "Don't lay out Partner Airlines' two groups as two equal-width side-by-side columns — rejected, leaves a dead gap under the shorter (Low-Cost) group. Keep the vertical stack.",
+      "Don't reintroduce the '24/7 customer support' item in Why Choose Us — removed by direct instruction; the section is 4 items.",
+      "Don't translate Partner Airlines' group labels into Thai, move Client Logos back below Contact, drop the second reverse-direction marquee row, or reset the marquee duration away from 40s — all set by direct instruction.",
+      "Don't make the two Client Logos marquee rows share the same client list (even reverse-ordered) — same-duration/same-width/opposite-direction locks them into a fixed relative offset, so any overlap never resolves. Split the list instead.",
+      "Don't add a hover-lift/shadow/scale treatment to any clickable element — generic pattern this world doesn't use. The sweep and ruled-underline are the system's actual hover language.",
+      "Don't widen the smoothed-wheel effect to touch/keyboard/scrollbar input, and don't reimplement it as a transformed-wrapper/virtual-scroll (e.g. the full Locomotive Scroll library) — real scrollY is what keeps IntersectionObserver reveals and anchor links working unmodified."
+    ]
+  }
+}
