@@ -16,9 +16,10 @@ const th = {
     headlineLine2: 'TRAVEL PARTNER',
     subtitle: 'Tera International Commercial Co., Ltd.',
     bullets: [
-      'ผู้เชี่ยวชาญด้านการเดินทาง ครบวงจร',
+      'ผู้เชี่ยวชาญด้านการเดินทางแบบครบวงจร',
       'บริการมืออาชีพ รวดเร็ว เชื่อถือได้',
-      'ดูแลทั้งลูกค้าบุคคลและองค์กร',
+      'ดูแลทั้งลูกค้าบุคคล องค์กร และหน่วยงานภาครัฐและรัฐวิสาหกิจ',
+      'one stop services ด้านการเดินทาง',
     ],
     ctaPrimary: 'ติดต่อเรา',
     ctaSecondary: 'ดูบริการของเรา',
@@ -36,23 +37,20 @@ const th = {
     items: [
       {
         title: 'ตั๋วเครื่องบิน',
-        subtitle: 'Air Ticket',
-        description: 'จองตั๋วเครื่องบินทั่วโลกและต่างประเทศ ทุกสายการบิน ราคาพิเศษ ออกตั๋วรวดเร็ว',
+        description: 'บริการจองตั๋วเครื่องบินภายในและต่างประเทศทั่วโลก ทุกสายการบิน ได้ตั๋วจริง เดินทางจริง',
       },
       {
         title: 'บริการวีซ่า',
-        subtitle: 'Visa Service',
-        description: 'บริการยื่นวีซ่าทุกประเทศ โดยทีมงานมืออาชีพ ให้คำปรึกษาฟรี',
+        description: 'บริการยื่นวีซ่าแบบท่องเที่ยวและธุรกิจ โดยทีมงานมืออาชีพ',
       },
       {
-        title: 'รถเช่า / รถพร้อมคนขับ',
-        subtitle: 'Car Rental & Transfer',
-        description: 'รถเช่าคุณภาพดี พร้อมคนขับมืออาชีพ บริการรับ-ส่งสนามบิน ทั่วไทย',
+        title: 'รถเช่าพร้อมคนขับ',
+        description:
+          'บริการรถเช่าพร้อมคนขับมืออาชีพ สำหรับ รับ–ส่งสนามบิน (Airport Transfer), และรถเหมาส่วนตัวรายวัน (Private Full-Day Charter) รองรับการเดินทางทั้ง ในประเทศไทยและต่างประเทศ',
       },
       {
-        title: 'จองโรงแรม',
-        subtitle: 'Hotel Booking',
-        description: 'จองโรงแรมทั่วโลก ราคาพิเศษ สำหรับลูกค้าทุกท่าน ทั้งรายบุคคลและองค์กร',
+        title: 'โรงแรม',
+        description: 'บริการจองโรงแรมทั่วโลก พร้อมการันตีการจองและห้องพัก รองรับทั้งลูกค้าบุคคล ลูกค้าองค์กร ภาครัฐและรัฐวิสาหกิจ',
       },
     ],
   },
@@ -75,7 +73,7 @@ const th = {
     eyebrow: 'ติดต่อเรา',
     heading: 'ติดต่อเรา',
     subheading: 'พร้อมดูแลทุกการเดินทางของคุณ',
-    phone: { label: 'Phone', value: '02-433-0191', sub: 'ติดต่อได้ 09.00 - 17.00 น.' },
+    phone: { label: 'Phone', value: '02-433-0191', mobile: '081-564-5966', sub: 'ติดต่อได้ 09.00 - 17.00 น.' },
     email: { label: 'Email', value: 'info@ticpumra.com', sub: 'ตอบกลับรวดเร็วภายใน 24 ชั่วโมง' },
     address: {
       label: 'Address',
@@ -91,7 +89,7 @@ const th = {
     servicesTitle: 'Our services',
     servicesList: ['ตั๋วเครื่องบิน', 'บริการวีซ่า', 'รถเช่า / รถพร้อมคนขับ', 'จองโรงแรม'],
     contactTitle: 'Contact us',
-    copyright: '© 2024 Tera International Commercial Co., Ltd. สงวนลิขสิทธิ์',
+    copyright: '© 1987-2026 Tera International Commercial Co., Ltd. All rights reserved.',
   },
   common: {
     langToggleTh: 'ไทย',

@@ -53,7 +53,12 @@ function AirlineGroup({ label, airlines }: { label: string; airlines: { src: str
             key={airline.name}
             className="flex h-20 items-center justify-center border border-ink/15 bg-paper-white px-6 sm:h-24 sm:px-7"
           >
-            <img src={airline.src} alt={airline.name} className="max-h-11 w-auto max-w-[9rem] object-contain sm:max-h-14 sm:max-w-[10.5rem]" />
+            <img
+              src={airline.src}
+              alt={airline.name}
+              loading="lazy"
+              className="max-h-11 w-auto max-w-[9rem] object-contain sm:max-h-14 sm:max-w-[10.5rem]"
+            />
           </div>
         ))}
       </div>
