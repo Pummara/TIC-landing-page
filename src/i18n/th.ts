@@ -66,7 +66,7 @@ const th = {
   airlines: {
     heading: 'สายการบินพันธมิตร',
     subheading: 'ครอบคลุมทุกสายการบิน ทั้งฟูลเซอร์วิสและโลว์คอสต์',
-    fullService: 'Full-Service Airlines',
+    fullService: 'Full-Service Carriers',
     lowCost: 'Low-Cost Carriers',
   },
   contact: {

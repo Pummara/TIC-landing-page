@@ -67,7 +67,7 @@ const en = {
   airlines: {
     heading: 'Carrier Partners',
     subheading: 'Every airline you need, full-service and low-cost alike',
-    fullService: 'Full-Service Airlines',
+    fullService: 'Full-Service Carriers',
     lowCost: 'Low-Cost Carriers',
   },
   contact: {
