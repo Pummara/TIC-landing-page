@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// GitHub Pages serves project sites from /<repo-name>/, not the domain root,
-// so asset paths need that prefix — but only for the Pages build. Vercel and
-// local dev both serve from root, so the default stays '/'.
-const isGithubPagesBuild = process.env.GITHUB_PAGES === 'true'
-
+// Served from the custom domain root (www.terainter.co.th) via the public/CNAME
+// file, so every build — Pages, Vercel, local dev — uses the same root base.
 export default defineConfig({
-  base: isGithubPagesBuild ? '/TIC-landing-page/' : '/',
+  base: '/',
   plugins: [react()],
   server: {
     port: Number(process.env.PORT) || 5173,
