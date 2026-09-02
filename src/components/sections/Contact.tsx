@@ -6,7 +6,7 @@ import { telHref } from '../../lib/tel'
 const cards = [
   { icon: PhoneIcon, key: 'phone' as const, href: (v: string) => telHref(v) },
   { icon: MailIcon, key: 'email' as const, href: (v: string) => `mailto:${v}` },
-  { icon: PinIcon, key: 'address' as const, href: () => undefined },
+  { icon: PinIcon, key: 'address' as const, href: () => 'https://maps.app.goo.gl/LLaPT4fGXCm1oVy68' },
 ]
 
 export default function Contact() {
@@ -68,7 +68,7 @@ export default function Contact() {
             return (
               <Wrapper
                 key={key}
-                {...(link ? { href: link } : {})}
+                {...(link ? { href: link, ...(key === 'address' ? { target: '_blank', rel: 'noopener noreferrer' } : {}) } : {})}
                 className="group sweep [--sweep-bg:theme(colors.ink.DEFAULT)] flex flex-col gap-3 px-2 py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink sm:px-8"
               >
                 <IconBadge
